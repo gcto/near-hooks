@@ -11,7 +11,7 @@ npm config set //npm.pkg.github.com/:_authToken PAT_TOKEN_GOES_HERE
 Installing firebase hooks
 
 ```bash
-npm i @gcto/firebase-hooks
+npm i @gcto/near-hooks
 ```
 
 ## Usage
@@ -20,38 +20,11 @@ npm i @gcto/firebase-hooks
 
 ```ts
 // quasar/src/boot
-import { firebaseInit } from "@gcto/firebase-hooks";
+import { nearInit } from "@gcto/near-hooks";
 import { boot } from "quasar/wrappers";
 export default boot(({ app }) => {
   app.use(() => {
-    firebaseInit({
-      apiKey: "YOUR_API_KEY",
-      authDomain: "YOUR_AUTH",
-      projectId: "YOUR_PROJECT_ID",
-      storageBucket: "YOUR_STORAGE_BUCKET",
-      messagingSenderId: "YOUR_MESSAGE_SENDER",
-      appId: "YOUR_APP_ID",
-      measurementId: "YOUR_MEASUREMENT_ID",
-    });
+   nearInit();
   });
 });
-```
-
-**Create Collection**
-
-```ts
-// PROVIDE TYPE
-type Dog = {
-  name: string;
-  breed: string;
-};
-
-// GET ALL IN COLLECTION
-useFirestoreCollection<Dog>("dog");
-
-// GET ONE IN COLLECTION
-useFirestoreDoc<Dog>("dog", ()=>"dog_id"),
-
-// QUERY FROM COLLECTION
-useFirestoreDoc<Dog>("dog", ()=>"dog_id"),
 ```
